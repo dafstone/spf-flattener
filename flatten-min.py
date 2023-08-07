@@ -34,7 +34,7 @@ def flatten_spf(spf_record):
     sorted_includes = sorted(include_lookup_counts.keys(), key=lambda x: -include_lookup_counts[x])
 
     for part in parts:
-        if part.startswith('include:') and dns_lookup_count > 3:
+        if part.startswith('include:') and dns_lookup_count > 10:
             if part.split(':', 1)[1] in sorted_includes:
                 include_domain = part.split(':', 1)[1]
                 include_spf = get_spf_record(include_domain)
